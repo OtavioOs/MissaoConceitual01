@@ -38,20 +38,33 @@ public class Pessoa{
    public class PessoaFisica extends Pessoa{
        private String cpf;
        private int idade;
+       private HashMap<Integer, String> cadastroFisico;
        
        public PessoaFisica(int id, String nome, String cpf, int idade){
         super(id, nome);
         this.cpf = cpf;
         this.idade = idade;
+        this.cadastroFisico = new HashMap();
        }
        
-   public void adicionarDado(int id, String dados){
-        cadastro.put(id, dados);
-        System.out.println("Pessoa adicionada com sucesso!");
-    };
+   public boolean adicionarDado(int id, String nome, String cpf, int idade){
+       /*if(!cadastro.containsKey(id) && cadastro.get(id) == null){
+           System.out.println("Ola");
+           return false;
+       }else{
+        cadastroFisico.put(id,dados);
+        System.out.println("PessoaFisica adicionada com sucesso!");
+           return true; 
+       }*/
+       cadastro.put(id,"Nome: "+nome+" CPF: "+cpf+" Idade: "+idade);
+        System.out.println("PessoaFisica adicionada com sucesso!");
+        return true;
+        
+    }
 
        
        public void exibirFisica(){
+           
            
            
            System.out.println(cadastro);

@@ -3,13 +3,14 @@ package cadastropoo;
 
 import cadastropoo.model.Pessoa;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class CadastroPOO {
-
+    
     public static void main(String[] args) {
         System.out.println("-----------------------------------");
         System.out.println("Sistema de Pessoas Cadastradas");
@@ -22,12 +23,12 @@ public class CadastroPOO {
         
         Scanner entrada = new Scanner(System.in);
         
-        int opCao = entrada.nextInt();
+       int opCao = entrada.nextInt();
         entrada.nextLine();
 
         boolean continuar = true;
         Pessoa pessoa = new Pessoa(0, "");
-        
+        Pessoa.PessoaFisica pessoaFisica = pessoa.new PessoaFisica(0, "", "", 0);
        
         switch (opCao) {
             case 1:  
@@ -62,12 +63,18 @@ public class CadastroPOO {
                     
                     
                     System.out.println("ID: ");
-                    int id = entrada.nextInt();
+                    int id1 = entrada.nextInt();
                     
                     entrada.nextLine();
-                    
                     System.out.println("Nome: ");
-                    String nome = entrada.nextLine();
+                    String nome1 = entrada.nextLine();
+                    
+                    /*if(continuar = pessoaFisica.adicionarDado(id, nome) == false){
+                        break;
+                    };*/
+                    
+                    
+                    
                     
                     
                     
@@ -77,15 +84,16 @@ public class CadastroPOO {
                     
                     
                     System.out.println("Idade: ");
-                    String idade = entrada.nextLine();
-                    String novo = cpf+idade;
+                    int idade = entrada.nextInt();
                     
                     
                     
                     
                     
-                    pessoa.adicionarDados(id, "Nome: "+nome+ " CPF: "+cpf+ " Idade: "+idade);
-                    pessoa.exibir(id);
+                    
+                    
+                    pessoaFisica.adicionarDado(id1, nome1, cpf, idade);
+                    pessoaFisica.exibirFisica();
                     
                     System.out.println("Deseja Sair ? (1 = Sair)");
                     String sair = entrada.nextLine();
@@ -99,10 +107,10 @@ public class CadastroPOO {
                 
 
 
-                default: {System.out.println("Erro de opção");
+                default: {System.err.println("Erro de opção");
                     }
                 
-            }                    
+            }                   
         }
     }
 
