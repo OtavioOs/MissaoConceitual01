@@ -1,9 +1,8 @@
 
 package cadastropoo.model;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 
 public class Pessoa{
@@ -16,19 +15,35 @@ public class Pessoa{
         this.id = id;
         this.nome = nome;
         this.cadastro = new HashMap();
-  
-        
     }
+      
+        public int getId(){
+        return this.id;
+    };    
+        public void setId(int key){
+        this.id = key;
+    };
 
-   public void adicionarDados(int id, String dados){
-        cadastro.put(id, dados);
+        
+        public String getNome(){
+        return this.nome;  
+    };
+        public void setNome(String n){
+        this.nome = n;            
+    };     
+
+ 
+        
+        
+   public void adicionarDado(int id, String nome){
+        cadastro.put(id, nome);
         System.out.println("Pessoa adicionada com sucesso!");
     };
     
     public void exibir(int key) {
         
         System.out.println(cadastro);
-        System.out.println(cadastro.size());
+        
         
          
     }
@@ -40,13 +55,33 @@ public class Pessoa{
        private int idade;
        private HashMap<Integer, String> cadastroFisico;
        
+       
+       
        public PessoaFisica(int id, String nome, String cpf, int idade){
         super(id, nome);
         this.cpf = cpf;
         this.idade = idade;
         this.cadastroFisico = new HashMap();
+
        }
        
+        public String getCpf(){
+        return cpf;
+    };    
+       
+        public void setCpf(String key){
+        this.cpf = key;
+           
+    }
+ 
+        public int getIdade(){
+        return idade;  
+    };
+       
+        public void setIdade(int n){
+        this.idade = n;            
+    };     
+  
    public boolean adicionarDado(int id, String nome, String cpf, int idade){
        /*if(!cadastro.containsKey(id) && cadastro.get(id) == null){
            System.out.println("Ola");
@@ -56,42 +91,71 @@ public class Pessoa{
         System.out.println("PessoaFisica adicionada com sucesso!");
            return true; 
        }*/
-       cadastro.put(id,"Nome: "+nome+" CPF: "+cpf+" Idade: "+idade);
+       cadastroFisico.put(id,"Nome: "+nome+" CPF: "+cpf+" Idade: "+idade);
+       cadastro.put(id,nome);
+       
+        
+       
+       
+       
         System.out.println("PessoaFisica adicionada com sucesso!");
+        
         return true;
         
     }
+   
+
 
        
        public void exibirFisica(){
            
            
            
-           System.out.println(cadastro);
+           System.out.println(cadastroFisico);
+            System.out.println(cadastro);
        }
    
+       
+       
    
-   }  
-   
- /* public class PessoaJuridica extends Pessoa{
+     
+  } 
+  public class PessoaJuridica extends Pessoa{
        private String cnpj;
+       private HashMap<Integer, String> cadastroJuridico;
        
         public PessoaJuridica(int id, String nome, String cnpj) {
             super(id, nome);
             this.cnpj = cnpj;
+            this.cadastroJuridico = new HashMap();
         }
-        protected void setCnpj(String cnpj){
-            this.cnpj = cnpj;
-   };
         
-       @Override
-        public void exibir(){
-            super.exibir();
-            System.out.println("CNPJ: "+cnpj);
-        }
-    };*/ 
+        public String getCnpj(){
+            return cnpj;
+        };
+        public void setCnpj(String cnpj){
+            this.cnpj = cnpj;
+        };
+
+        public void adicionarJuridico(int id, String nome, String cnpj){
+            cadastroJuridico.put(id, "Nome: "+nome+" CNPJ: "+cnpj);
+            cadastro.put(id, "Nome: "+nome);
+        };
+        
+        public void exibirJuridico(){
+            System.out.println(cadastro);
+            System.out.println(cadastroJuridico);
+        };
+        
+        
+        
+       
+
+        
+    }
    
    
+
 }
 
     

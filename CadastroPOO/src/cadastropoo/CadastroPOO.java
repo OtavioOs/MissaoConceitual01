@@ -2,10 +2,6 @@
 package cadastropoo;
 
 import cadastropoo.model.Pessoa;
-
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -19,6 +15,7 @@ public class CadastroPOO {
 
         System.out.println("1 - Adicionar nova Pessoa");
         System.out.println("2 - Adicionar nova Pessoa Fisica");
+        System.out.println("3 - Adicionar nova Pessoa Juridica");
 
         
         Scanner entrada = new Scanner(System.in);
@@ -29,23 +26,28 @@ public class CadastroPOO {
         boolean continuar = true;
         Pessoa pessoa = new Pessoa(0, "");
         Pessoa.PessoaFisica pessoaFisica = pessoa.new PessoaFisica(0, "", "", 0);
-       
+        Pessoa.PessoaJuridica pessoaJuridica = pessoa.new PessoaJuridica(0,"","");
         switch (opCao) {
             case 1:  
             {
                 
                 while (continuar){
                     System.out.println("ID: ");
-                    int id = entrada.nextInt();
-                    
-                    entrada.nextLine();
-                    
+                    int id = entrada.nextInt();                    
+                    entrada.nextLine();                    
                     System.out.println("Nome: ");
                     String nome = entrada.nextLine();
                     
-                    pessoa.adicionarDados(id, nome);
-                    pessoa.exibir(id);
+                    //Metodos para passar informações
+                    pessoa.setId(id);
+                    pessoa.setNome(nome);
                     
+                    pessoa.adicionarDado(pessoa.getId(),pessoa.getNome());
+                    
+                    //Exibir
+                    pessoa.exibir(pessoa.getId());
+                    
+                    //Chamada para caso queira Adicionar mais
                     System.out.println("Deseja Sair ? (1 = Sair)");
                     String sair = entrada.nextLine();
                     
@@ -74,7 +76,8 @@ public class CadastroPOO {
                     };*/
                     
                     
-                    
+
+
                     
                     
                     
@@ -89,10 +92,13 @@ public class CadastroPOO {
                     
                     
                     
+                    pessoa.setId(id1);
+                    pessoa.setNome(nome1);
+                    pessoaFisica.setCpf(cpf);
+                    pessoaFisica.setIdade(idade);
                     
+                    pessoaFisica.adicionarDado(pessoa.getId(), pessoa.getNome(), pessoaFisica.getCpf(), pessoaFisica.getIdade());
                     
-                    
-                    pessoaFisica.adicionarDado(id1, nome1, cpf, idade);
                     pessoaFisica.exibirFisica();
                     
                     System.out.println("Deseja Sair ? (1 = Sair)");
@@ -102,17 +108,46 @@ public class CadastroPOO {
                         continuar = false;
                         break;
                     }
-                    
+                    break;
                 }
+                               
+           
+        
+        case 3:
+            while (continuar){
+                System.out.println("ID: ");
+                int id = entrada.nextInt();
+                    
+                entrada.nextLine();
+                System.out.println("Nome: ");
+                String nome = entrada.nextLine();
+                System.out.println("CNPJ: ");
+                String cnpj = entrada.nextLine();
                 
-
-
-                default: {System.err.println("Erro de opção");
-                    }
+                pessoa.setId(id);
+                pessoa.setNome(nome);
+                pessoaJuridica.setCnpj(cnpj);
                 
-            }                   
+                pessoaJuridica.adicionarJuridico(pessoa.getId(), pessoa.getNome(), pessoaJuridica.getCnpj());
+                
+                
+                pessoaJuridica.exibirJuridico();
+                
+                System.out.println("Deseja Sair ? (1 = Sair)");
+                String sair = entrada.nextLine();
+                    
+                if (sair.equals("1")){
+                    continuar = false;
+                    break;
+                }
+                break;
+            }
+        
+        
+        
         }
     }
+}
 
     
 
