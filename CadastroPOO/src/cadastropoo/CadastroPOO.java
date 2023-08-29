@@ -39,10 +39,9 @@ public class CadastroPOO {
                     String nome = entrada.nextLine();
                     
                     //Metodos para passar informações
-                    pessoa.setId(id);
-                    pessoa.setNome(nome);
+
                     
-                    pessoa.adicionarDado(pessoa.getId(),pessoa.getNome());
+                    pessoa.adicionarDados(id,nome);
                     
                     //Exibir
                     pessoa.exibir(pessoa.getId());
@@ -92,12 +91,12 @@ public class CadastroPOO {
                     
                     
                     
-                    pessoa.setId(id1);
-                    pessoa.setNome(nome1);
+
+                    
                     pessoaFisica.setCpf(cpf);
                     pessoaFisica.setIdade(idade);
                     
-                    pessoaFisica.adicionarDado(pessoa.getId(), pessoa.getNome(), pessoaFisica.getCpf(), pessoaFisica.getIdade());
+                    pessoaFisica.adicionarDado(id1, nome1, pessoaFisica.getCpf(), pessoaFisica.getIdade());
                     
                     pessoaFisica.exibirFisica();
                     
@@ -108,7 +107,7 @@ public class CadastroPOO {
                         continuar = false;
                         break;
                     }
-                    break;
+                    
                 }
                                
            
@@ -124,12 +123,11 @@ public class CadastroPOO {
                 System.out.println("CNPJ: ");
                 String cnpj = entrada.nextLine();
                 
-                pessoa.setId(id);
-                pessoa.setNome(nome);
+
                 pessoaJuridica.setCnpj(cnpj);
                 
                 pessoaJuridica.adicionarJuridico(pessoa.getId(), pessoa.getNome(), pessoaJuridica.getCnpj());
-                
+                pessoa.adicionarDados(id, nome);
                 
                 pessoaJuridica.exibirJuridico();
                 

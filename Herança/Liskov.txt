@@ -1,0 +1,1 @@
+https://www.dtidigital.com.br/blog/principios-solid-o-principio-da-substituicao-de-liskov

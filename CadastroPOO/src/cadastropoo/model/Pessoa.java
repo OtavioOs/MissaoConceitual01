@@ -9,6 +9,7 @@ public class Pessoa{
     private int id;
     private String nome;
     private HashMap<Integer, String> cadastro;
+    
 
   
     public Pessoa(int id, String nome){
@@ -18,9 +19,9 @@ public class Pessoa{
     }
       
         public int getId(){
-        return this.id;
+        return id;
     };    
-        public void setId(int key){
+        private void setId(int key){
         this.id = key;
     };
 
@@ -28,15 +29,17 @@ public class Pessoa{
         public String getNome(){
         return this.nome;  
     };
-        public void setNome(String n){
+        private void setNome(String n){
         this.nome = n;            
     };     
 
- 
+
+    
         
         
-   public void adicionarDado(int id, String nome){
-        cadastro.put(id, nome);
+   public void adicionarDados(int id, String nome){
+        cadastro.put(id,nome);
+        
         System.out.println("Pessoa adicionada com sucesso!");
     };
     
@@ -61,7 +64,7 @@ public class Pessoa{
         super(id, nome);
         this.cpf = cpf;
         this.idade = idade;
-        this.cadastroFisico = new HashMap();
+        cadastroFisico = new HashMap();
 
        }
        
@@ -82,7 +85,7 @@ public class Pessoa{
         this.idade = n;            
     };     
   
-   public boolean adicionarDado(int id, String nome, String cpf, int idade){
+   public void adicionarDado(int id, String nome, String cpf, int idade){
        /*if(!cadastro.containsKey(id) && cadastro.get(id) == null){
            System.out.println("Ola");
            return false;
@@ -91,17 +94,29 @@ public class Pessoa{
         System.out.println("PessoaFisica adicionada com sucesso!");
            return true; 
        }*/
-       cadastroFisico.put(id,"Nome: "+nome+" CPF: "+cpf+" Idade: "+idade);
-       cadastro.put(id,nome);
+       if (!cadastroFisico.containsKey(id) && !cadastro.containsKey(id)){
+           
+           
+           
+           cadastroFisico.put(id,"Nome: "+nome+" CPF: "+cpf+" Idade: "+idade);
+           cadastro.put(id, nome);
+           /*cadastro.put(id,nome);*/
+           
+           super.adicionarDados(id, nome);
+           super.setId(id);
+           super.setNome(nome);
+           System.out.println("PessoaFisica adicionada com sucesso!");
+       }else{
+           System.out.println("Erro. id já está atribuido.");
+       }        
+               
+       
+       
        
         
-       
-       
-       
-        System.out.println("PessoaFisica adicionada com sucesso!");
         
-        return true;
-        
+       /* return true;
+        */
     }
    
 
